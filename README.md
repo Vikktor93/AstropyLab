@@ -44,7 +44,7 @@ conda install -c conda-forge requests python-dotenv opencv matplotlib numpy
 Crea un archivo llamado ```.env``` en la raíz del proyecto.
 
 ```toml
-NASA_API_KEY=AQUI_VA_API_KEY
+NASA_API_KEY = AQUI_VA_API_KEY
 ``` 
 
 ## 📂 Estructura del Proyecto
