@@ -15,10 +15,15 @@ class NasaClient:
         }
 
         try:
-            response = requests.get(endpoint, params=params)
-            response.raise_for_status() 
+            print(f"📡 Conectando a: {endpoint}")
+            response = requests.get(endpoint, params=params, timeout=30) # Timeout para que no se quede pegado eternamente
+            response.raise_for_status() # Esto salta si hay error 404, 500, 504, etc.
             return response.json()
             
+        except requests.exceptions.HTTPError as e:
+            print(f"❌ Error HTTP de la NASA: {e}")
+            return None
+            
         except requests.exceptions.RequestException as e:
-            print(f"Error conectando a la NASA: {e}")
+            print(f"❌ Error de Conexión: {e}")
             return None
