@@ -63,7 +63,9 @@ AstropyLab/
 │
 ├── .env                    # Credenciales 
 ├── .gitignore              # Configuración de exclusiones
+├── app.py                  # Interfaz Gráfica (Streamlit)
 ├── main.py                 # Punto de entrada de la aplicación
+├── environment.yml         # Dependencias
 └── README.md               # Documentación
 ``` 
 
@@ -77,7 +79,9 @@ python main.py
 El sistema verificará la imagen del día, la descargará si es necesario y ejecutará el análisis visual, mostrando los resultados en la consola.
 
 ## 🔮 Roadmap (Próximos Pasos)
-[ ] Interfaz Gráfica (GUI) para visualizar las imágenes y datos.
+✅ Interfaz Gráfica (GUI) para visualizar las imágenes y datos.
+
+✅ Modo Offline (Análisis de Imágenes desde carpeta data).
 
 [ ] Integración con más APIs de la NASA (Mars Rover Photos, NeoWs).
 
