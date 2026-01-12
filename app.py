@@ -75,7 +75,7 @@ if mode == "📡 API NASA (Online)":
 elif mode == "📂 Archivos Locales (Offline)" and selected_file:
     # LÓGICA OFFLINE
     image_path_to_analyze = os.path.join("data", selected_file)
-    image_title = f"Archivo Local: {selected_file}"
+    image_title = f"**Archivo Local:** {selected_file}"
     image_explanation = "Imagen cargada desde el almacenamiento local."
     
     # Mostrar la imagen local
@@ -84,8 +84,9 @@ elif mode == "📂 Archivos Locales (Offline)" and selected_file:
 # --- SECCIÓN DE ANÁLISIS ---
 if analyze_btn and image_path_to_analyze:
     st.divider()
-    st.subheader(f"🔬 Resultados del Análisis: {image_title}")
-    
+    st.subheader(f"🔬 Resultados del Análisis")
+    st.write(f"{image_title}")
+
     try:
         analyzer = SpaceAnalyzer(image_path_to_analyze)
         
