@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import pandas as pd
 
 class SpaceAnalyzer:
     def __init__(self, image_path):
@@ -47,3 +48,17 @@ class SpaceAnalyzer:
         stars = [c for c in contours if cv2.contourArea(c) > min_star_area]
         
         return len(stars)
+    
+    
+    # Calculo del histograma de color para R, G y B
+    def get_color_histogram(self):
+        colors = ('b', 'g', 'r') # OpenCV lee en BGR
+        data = {}
+
+        for i, color in enumerate(colors):
+            # Calculo del histograma: imagen, canal, máscara, tamaño, rango
+            hist = cv2.calcHist([self.img], [i], None, [256], [0, 256])
+            col_name = 'Azul' if color == 'b' else 'Verde' if color == 'g' else 'Rojo'
+            data[col_name] = hist.flatten()
+        df = pd.DataFrame(data)
+        return df
