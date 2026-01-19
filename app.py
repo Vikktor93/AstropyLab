@@ -93,16 +93,28 @@ if analyze_btn and image_path_to_analyze:
         col1, col2 = st.columns(2)
         
         with col1:
-            # Conteo de Estrellas
             stars = analyzer.get_star_count()
             st.metric(label="✨ Cuerpos Celestes Detectados", value=stars)
         
         with col2:
-            # Colorimetría
             rgb, label = analyzer.get_dominant_color()
             st.write(f"**Tonalidad:** {label}")
             hex_color = f"#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
             st.markdown(f'<div style="background-color:{hex_color};width:100%;height:40px;border-radius:5px;"></div>', unsafe_allow_html=True)
+
+        st.divider()
+        st.subheader("📊 Espectro de Color (Histograma RGB)")
+        
+        # Obtención de datos del histograma
+        hist_df = analyzer.get_color_histogram()
+        
+        # Graficos
+        st.line_chart(
+            hist_df, 
+            x_label="Intensidad de Píxel (0=Oscuro, 255=Brillante)", 
+            y_label="Cantidad de Píxeles",
+            color=["#0000FF", "#00FF00", "#FF0000"]
+        )
             
     except Exception as e:
         st.error(f"Error analizando la imagen: {e}")
