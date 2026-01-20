@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 class SpaceAnalyzer:
     def __init__(self, image_path):
@@ -62,3 +63,19 @@ class SpaceAnalyzer:
             data[col_name] = hist.flatten()
         df = pd.DataFrame(data)
         return df
+    
+        
+    # Genera un mapa de calor "térmico" basado en la luminosidad de los píxeles
+    def get_thermal_heatmap(self):
+
+        gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
+        
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
+        heatmap = ax.imshow(gray, cmap='inferno')
+        
+        plt.colorbar(heatmap, label='Intensidad de Luz (0-255)')
+        ax.set_title("Mapa de Distribución de Energía Lumínica")
+        ax.axis('off') 
+
+        return fig
