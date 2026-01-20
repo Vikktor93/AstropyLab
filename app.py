@@ -115,6 +115,14 @@ if analyze_btn and image_path_to_analyze:
             y_label="Cantidad de Píxeles",
             color=["#0000FF", "#00FF00", "#FF0000"]
         )
-            
+    
+        st.divider()
+        st.subheader("🔥 Mapa de Calor de Luminosidad")
+        st.write("Este gráfico transforma la luz en 'temperatura' visual. Las zonas amarillas/naranjas son los núcleos de alta energía (estrellas/centros galácticos), mientras que el violeta/negro muestra el vacío o gas frío.")
+        
+        with st.spinner("Generando mapa térmico..."):
+            thermal_fig = analyzer.get_thermal_heatmap()
+            st.pyplot(thermal_fig)
+
     except Exception as e:
         st.error(f"Error analizando la imagen: {e}")
