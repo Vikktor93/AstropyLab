@@ -2,13 +2,18 @@
 
 **AstropyLab** es una aplicación desarrollada en Python que funciona como un observatorio astronómico personal. Se conecta a la API de la NASA para obtener imágenes del cosmos y utiliza técnicas de Visión por Computador (OpenCV) para realizar análisis automáticos de colorimetría y detección de cuerpos celestes.
 
+Cuenta con una **Interfaz Gráfica (GUI)** moderna basada en Streamlit, gráficos interactivos y un **Modo Offline** para analizar imágenes locales.
+
 ## 🚀 Funcionalidades Actuales
 
-* **Conexión API NASA:** Recupera automáticamente la "Imagen Astronómica del Día" (APOD) junto con su metada (título, fecha, explicación).
+* **Conexión API NASA:** Recupera automáticamente la "Imagen Astronómica del Día" (APOD) junto con su metadata (título, fecha, explicación).
+* **Modo Offline:** Sistema de contingencia para cargar y analizar imágenes guardadas localmente en la carpeta `data/`.
+* **Interfaz Interactiva:** Dashboard web para visualización de datos en tiempo real.
 * **Gestión Inteligente de Descargas:** Descarga y almacena imágenes en alta definición localmente, organizándolas por fecha.
 * **Análisis de Visión Artificial:**
-    * 🎨 **Colorimetría:** Analiza los tonos predominantes para inferir características (nebulosas, filtros, etc.).
+    * 🎨 **Colorimetría:** Detección de tonalidades predominantes para inferir composición (ejemplo: nebulosas, presencia de oxígeno vs hidrógeno, etc.)
     * ✨ **Conteo de Estrellas:** Algoritmo de detección de puntos brillantes para estimar la densidad estelar en la imagen.
+    * 📊 **Espectrómetro RGB:** Histograma interactivo que descompone la luz de la imagen en sus canales de color (Rojo, Verde, Azul) para análisis espectral.
 * **Arquitectura Modular:** Estructura escalable basada en POO.
 
 ## 🛠️ Requisitos Previos
@@ -73,19 +78,26 @@ AstropyLab/
 Asegúrate de tener el entorno activado y ejecuta el script principal:
 
 ```bash
-python main.py
+streamlit run app.py
 ```
 
-El sistema verificará la imagen del día, la descargará si es necesario y ejecutará el análisis visual, mostrando los resultados en la consola.
+Se abrirá una pestaña en tu navegador donde podrás:  
+📡 **Modo Online:** Consultar la APOD (Astronomy Picture of the Day) en tiempo real.  
+📂 **Modo Offline:** Analizar imágenes de la colección local.  
+🔬 **Analizar:** Ejecutar algoritmos de visión computacional para obtener conteo de estrellas, colorimetría y espectro RGB.  
 
 ## 🔮 Roadmap (Próximos Pasos)
-✅ Interfaz Gráfica (GUI) para visualizar las imágenes y datos.
+✅ Interfaz Gráfica (GUI) para visualizar las imágenes y datos (Streamlit)
 
-✅ Modo Offline (Análisis de Imágenes desde carpeta data).
+✅ Modo Offline (Análisis de Imágenes locales).
+
+✅ Gráficos Interactivos (Histograma RGB).
 
 [ ] Integración con más APIs de la NASA (Mars Rover Photos, NeoWs).
 
-[ ] Análisis más profundos (detección de constelaciones, clasificación de galaxias).
+[ ] Deep Learning: Clasificación automática de galaxias (Espiral/Elíptica) usando Redes Neuronales.
+
+[ ] Astrometría: Detección de constelaciones y patrones estelares.
 
 [ ] Automatización diaria (Cron jobs).
 
